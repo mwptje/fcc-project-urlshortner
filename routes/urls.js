@@ -18,17 +18,18 @@ router.route("/:short_url").get((req,res) => {
     .catch(err => {req.status(400).json({ error: err})})
 })
 router.route("/new").post((req, res) => {
-  
+  console.log(req.body.url_input)
   const original_url = req.body.url_input;
   const short_url = 1;
   const newUrl = new Url({
     original_url,
     short_url
   });
-  newUrl
-    .save()
-    .then(() => res.json({ orignal_url: original_url, short_url: short_url }))
-    .catch(err => res.status(400).json("Error: " + err));
+  console.log(original_url,short_url)
+  // newUrl
+  //   .save()
+  //   .then(() => res.json({ orignal_url: original_url, short_url: short_url }))
+  //   .catch(err => res.status(400).json("Error: " + err));
 });
 
 module.exports = router
