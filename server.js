@@ -40,7 +40,11 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+// add routes for CRUD operations for the url shortner
+const urlsRouter = require("./routes/urls");
+app.use("/api/shorturl", urlsRouter);
+
 
 app.listen(port, function () {
-  console.log('Node.js listening ...');
+  console.log(`Node.js listening on port ${port} ...`);
 });
