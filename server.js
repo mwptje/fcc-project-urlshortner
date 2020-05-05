@@ -11,22 +11,18 @@ var app = express();
 // Basic Configuration 
 var port = process.env.PORT || 3000;
 
-/** this project needs a db !! **/ 
-// mongoose.connect(process.env.DB_URI);
 // setup mongodb atlas connection
 const uri = process.env.DB_URI;
-// console.log(port,uri,process.env)
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
-// connect to Mongodb Atlas
+
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB Atlas database connection established");
 });
-
 app.use(cors());
 
 /** this project needs to parse POST bodies **/
